@@ -1,8 +1,23 @@
 const express = require("express");
 const app = express();
-const port = 3005;
+const bodyParser = require("body-parser");
+const port = 3000;
 
 const varNum = 50;
+const check = true;
+
+// const middleware = (req, res, next) => {
+//     console.log("From middleware");
+//     if(check) {
+//         next();
+//     } else {
+//         res.send("Sending from middleware");
+//     }
+// }
+
+app.use(bodyParser.json());   // to parse the body while reciving from the client and this is done is middleware for to ensure that it is readable for all
+
+
 
 app.get("/", (req, res) => {
     res.send(`<!DOCTYPE html>
@@ -213,7 +228,11 @@ const getAllLang = (req, res) => {
 }
 
 const createLang = (req, res) => {
-    const {lang, greet} = req.query;
+    // const {lang, greet} = req.query;
+    // const {lang, greet} = req.headers;
+    // console.log(req.headers);
+    const {lang, greet} = req.body;
+    console.log(req.body)
     if(getGreet(lang)) {
         return res.status(409).send("Language already exists :)");
     }
