@@ -21,7 +21,9 @@ app.use(bodyParser.json());   // to parse the body while reciving from the clien
 
 app.get("/", (req, res) => {
     res.status(200).sendFile(`${__dirname}/landingPage.html`, (err) => {
-        console.log(err);
+        if(err) {
+            console.log(err);
+        }
     })
 });
 
@@ -75,7 +77,9 @@ app.get('/fib', (req, res) => {
 
 app.get("/html", (req, res) => {
     res.sendFile(`${__dirname}/index.html`, (err) => {
-        console.log(err);
+        if(err) {
+            console.log(err);
+        }
     })
 })
 
