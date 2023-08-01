@@ -40,12 +40,14 @@ const sum1ToN = (count) => {
 
 
 app.post('/getSum', (req, res) => {
+    console.log(req.headers)
     const {counter} = req.body;
     const response = sum1ToN(counter);
     // res.send(`Um from One to ${n}: ${sum}`);
     // const sum = sum1ToN(100);
     // const print = "the sum from 1 to 100 is " + sum;
     // res.send(`<h2>${print}</h2>`);
+    // res.setHeader("Content-type", "text/plain");
     res.status(200).send(response);
 });
 
