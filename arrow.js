@@ -18,4 +18,6 @@ fs.readFile("a.txt", "utf-8", (err, data) => {
     if(!err) {
         console.log(data);
     }
-})
+});
+
+// Random comment
